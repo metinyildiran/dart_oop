@@ -4,7 +4,7 @@ void main() {
 
   CustomerManager customerManager = CustomerManager();
 
-  var customer = Customer("Metin", "Yıldıran");
+  var customer = Customer.asdasd("Metin",lastName: "Yıldıran");
 
   customerManager.add(customer);
 }
@@ -41,7 +41,9 @@ class Customer {
   late String firstName;
   late String lastName;
 
-  Customer(String firstName, String lastName){
+  Customer() {}
+
+  Customer.asdasd(String firstName, {String lastName = ""}) {
     this.firstName = firstName;
     this.lastName = lastName;
   }
