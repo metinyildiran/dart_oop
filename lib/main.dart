@@ -1,12 +1,21 @@
 void main() {
-  PersonelManager personelManager = PersonelManager();
+  var personelManager = PersonelManager();
   personelManager.add();
 
-  CustomerManager customerManager = CustomerManager();
+  var customerManager = CustomerManager();
 
-  var customer = Customer.asdasd("Metin",lastName: "Yıldıran");
+  Person customer1 = Customer.asdasd("Metin", lastName: "Yıldıran");
 
-  customerManager.add(customer);
+  customerManager.add(customer1);
+
+  var customer2 = Customer.asdasd("Ahmet");
+
+  customer1 = customer2;
+  customer2.firstName = "Murat";
+
+  customerManager.add(customer1);
+
+
 }
 
 class PersonelManager {
@@ -24,8 +33,8 @@ class PersonelManager {
 }
 
 class CustomerManager {
-  void add(Customer customer) {
-    print("Customer " + customer.firstName + " Eklendi");
+  void add(Person person) {
+    print("Customer " + person.firstName + " Eklendi");
   }
 
   void guncelle() {
@@ -37,13 +46,28 @@ class CustomerManager {
   }
 }
 
-class Customer {
+class Person {
   late String firstName;
   late String lastName;
+  late String identityNumber;
+}
+
+class Customer extends Person {
 
   Customer() {}
 
   Customer.asdasd(String firstName, {String lastName = ""}) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
+
+class Personel extends Person {
+  late int dateOfStart;
+
+  Personel() {}
+
+  Personel.asdasd(String firstName, {String lastName = "", this.dateOfStart = 1980}) {
     this.firstName = firstName;
     this.lastName = lastName;
   }
